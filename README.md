@@ -18,31 +18,6 @@ The goal of the site is to give students a clean, responsive, and searchable dir
 - **`preview.js`**: Lightweight search and filter prototype for live testing.
 - **`HANDOFF.md`**: Direct integration guide and Python f-string snippet for the **Page Builder Team** (`build_page.py`).
 
----
-
-## 🛠️ How to Work on This in Phoenix Code (Mac)
-
-1. **Open the Project Folder**:
-   - In Phoenix Code, choose **File > Open Folder...** (or press `Cmd + O`).
-   - Select `/Users/tomsa/AI/CS Club Project`.
-   - *(You can close the default tutorial project `phoenix-pro.html`).*
-
-2. **Start Live Preview**:
-   - Open `index.html`.
-   - Click the **Live Preview** icon (lightning bolt / compass icon in top-right or sidebar) or press `Cmd + Option + P`.
-   - As you edit `style.css` or `index.html`, Phoenix Code will live-reload your browser instantly.
-
-3. **Pushing Changes to GitHub**:
-   In your terminal (inside `/Users/tomsa/AI/CS Club Project`):
-   ```bash
-   git add style.css index.html
-   git commit -m "Update card styling and colors"
-   git push origin main
-   ```
-   GitHub Pages will automatically update with your latest live design!
-
----
-
 ## 📋 Color Tokens Reference
 
 | Variable | Hex Value | Role |
