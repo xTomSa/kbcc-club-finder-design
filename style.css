@@ -1,0 +1,598 @@
+/* ==========================================================================
+   Kingsborough Community College - Club Directory Design System
+   Design Team Deliverable: style.css
+   Author: Design Team (CS Club Project)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & CSS Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Colors (KBCC Maritime Teal & Sun Gold) */
+  --kbcc-teal: #0e525a;
+  --kbcc-teal-dark: #09373d;
+  --kbcc-teal-light: #eaf4f5;
+  --kbcc-teal-surface: #f2f8f9;
+
+  --kbcc-gold: #e59a38;
+  --kbcc-gold-hover: #cf8424;
+  --kbcc-gold-light: #fef7ed;
+  --kbcc-gold-border: #fbd38d;
+
+  /* Neutrals & Surfaces */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+
+  /* Typography Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-on-teal: #ffffff;
+  --text-on-gold: #ffffff;
+
+  /* Borders & Shadows */
+  --border-light: #e2e8f0;
+  --border-focus: #0e525a;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 14px 20px -4px rgba(14, 82, 90, 0.12), 0 6px 8px -3px rgba(14, 82, 90, 0.06);
+
+  /* Typography Stack */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --line-height-base: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header & Hero Section
+   -------------------------------------------------------------------------- */
+.site-header {
+  background: linear-gradient(135deg, var(--kbcc-teal) 0%, var(--kbcc-teal-dark) 100%);
+  color: var(--text-on-teal);
+  padding: 3rem 1.5rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--kbcc-gold);
+}
+
+.header-container {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.badge-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.badge-tagline svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--kbcc-gold);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-title .highlight-gold {
+  color: var(--kbcc-gold);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 620px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   4. Main Container & Controls Section (Search & Filter)
+   -------------------------------------------------------------------------- */
+.main-content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: -1.75rem auto 3rem;
+  padding: 0 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.controls-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  margin-bottom: 2rem;
+}
+
+/* Search Bar */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  width: 20px;
+  height: 20px;
+  color: var(--kbcc-teal);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.95rem 2.85rem 0.95rem 3rem;
+  font-size: 1.05rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-subtle);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  background-color: var(--bg-surface);
+  border-color: var(--kbcc-teal);
+  box-shadow: 0 0 0 4px rgba(14, 82, 90, 0.12);
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 0.85rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: var(--radius-full);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-search-btn:hover {
+  background-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.clear-search-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Filter Chips / Categories */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip-btn {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.chip-btn:hover {
+  background-color: var(--kbcc-teal-light);
+  color: var(--kbcc-teal-dark);
+  border-color: rgba(14, 82, 90, 0.3);
+}
+
+.chip-btn.active {
+  background-color: var(--kbcc-teal);
+  color: #ffffff;
+  border-color: var(--kbcc-teal);
+  font-weight: 600;
+}
+
+/* Results Count Indicator */
+.results-summary {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.results-summary strong {
+  color: var(--kbcc-teal-dark);
+}
+
+/* --------------------------------------------------------------------------
+   5. Club Cards Grid
+   -------------------------------------------------------------------------- */
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Individual Club Card */
+.club-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  position: relative;
+}
+
+.club-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(14, 82, 90, 0.35);
+}
+
+.card-top {
+  margin-bottom: 1.25rem;
+}
+
+/* Category Badge inside Card */
+.card-category-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.85rem;
+  background-color: var(--kbcc-teal-light);
+  color: var(--kbcc-teal);
+}
+
+.card-category-badge.academic {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.card-category-badge.arts {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.card-category-badge.social {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+}
+
+.card-category-badge.sports {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+/* Club Title & Body */
+.club-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.65rem;
+}
+
+.club-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+/* Metadata Info (Meeting time / location) */
+.club-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-light);
+}
+
+.club-meta svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--kbcc-gold);
+}
+
+/* Card Actions / Buttons */
+.card-action {
+  margin-top: auto;
+}
+
+/* Common Button Style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.18s ease;
+}
+
+/* State 1: Confirmed Signup Link ("Join now") */
+.btn-join {
+  background-color: var(--kbcc-gold);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(229, 154, 56, 0.25);
+}
+
+.btn-join:hover {
+  background-color: var(--kbcc-gold-hover);
+  box-shadow: 0 4px 8px rgba(229, 154, 56, 0.35);
+}
+
+.btn-join:hover svg {
+  transform: translateX(3px);
+}
+
+/* State 2: Email to Join ("Email to join") */
+.btn-email {
+  background-color: var(--kbcc-teal);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(14, 82, 90, 0.2);
+}
+
+.btn-email:hover {
+  background-color: var(--kbcc-teal-dark);
+  box-shadow: 0 4px 8px rgba(14, 82, 90, 0.3);
+}
+
+/* State 3: Pending Confirmation ("Signup pending confirmation") */
+.btn-pending {
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  border-color: var(--border-light);
+  cursor: not-allowed;
+  font-weight: 500;
+}
+
+.btn-pending:hover {
+  background-color: var(--bg-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   6. Empty Search State
+   -------------------------------------------------------------------------- */
+.empty-state {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: var(--bg-surface);
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-lg);
+  margin: 1rem 0;
+}
+
+.empty-state svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  color: var(--text-muted);
+}
+
+.empty-state h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto 1.25rem;
+}
+
+.btn-reset-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.15rem;
+  background-color: var(--kbcc-teal-light);
+  color: var(--kbcc-teal-dark);
+  border: 1px solid rgba(14, 82, 90, 0.2);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-reset-search:hover {
+  background-color: var(--kbcc-teal);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   7. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  margin-top: auto;
+  background-color: #091e23;
+  color: #94a3b8;
+  padding: 2.5rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.footer-brand span {
+  color: var(--kbcc-gold);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-copy {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 2.25rem 1rem 3rem;
+  }
+
+  .main-content {
+    margin-top: -1.25rem;
+    padding: 0 1rem;
+  }
+
+  .controls-card {
+    padding: 1.2rem;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .clubs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}

@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Phoenix Code / Brackets editor files
+.phoenix/
+.brackets.json
+
+# Thumbnails and system files
+Thumbs.db
+*.log

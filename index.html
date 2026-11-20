@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a Club at Kingsborough | KBCC Club Directory</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Design Team Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Site Header & Hero Banner -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="badge-tagline">
+        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        Kingsborough Community College &bull; Student Life
+      </div>
+      <h1 class="hero-title">Find a Club at <span class="highlight-gold">Kingsborough</span></h1>
+      <p class="hero-subtitle">Explore active student clubs, meet new friends, and go straight to the right place to join.</p>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+
+    <!-- Search & Filter Controls -->
+    <section class="controls-card" aria-label="Club Search and Filters">
+      <!-- Search Input -->
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="search" 
+          id="clubSearch" 
+          class="search-input" 
+          placeholder="Search by club name or keyword (e.g., 'computer', 'art')..." 
+          autocomplete="off"
+          aria-label="Search clubs"
+        >
+        <button type="button" id="clearSearch" class="clear-search-btn" aria-label="Clear search query">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Category Filter Chips & Counter -->
+      <div class="filter-row">
+        <div class="category-chips" role="group" aria-label="Filter clubs by category">
+          <button type="button" class="chip-btn active" data-category="all">All Clubs</button>
+          <button type="button" class="chip-btn" data-category="academic">Academic &amp; Tech</button>
+          <button type="button" class="chip-btn" data-category="arts">Arts &amp; Culture</button>
+          <button type="button" class="chip-btn" data-category="social">Social &amp; Community</button>
+          <button type="button" class="chip-btn" data-category="sports">Sports &amp; Wellness</button>
+        </div>
+
+        <div class="results-summary" aria-live="polite">
+          Showing <strong id="visibleCount">6</strong> active clubs
+        </div>
+      </div>
+    </section>
+
+    <!-- Clubs Grid -->
+    <section class="clubs-grid" id="clubsGrid" aria-label="Clubs Directory List">
+
+      <!-- Club 1: Computer Science (Confirmed Link) -->
+      <article class="club-card" data-category="academic">
+        <div class="card-top">
+          <span class="card-category-badge academic">Academic &amp; Tech</span>
+          <h2 class="club-name">Computer Science Club</h2>
+          <p class="club-description">Meet fellow student developers, practice coding challenges, collaborate on real-world projects, and prepare for upcoming hackathons.</p>
+        </div>
+        <div class="card-bottom">
+          <div class="club-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Wednesdays &bull; 3:00 PM &bull; Room M-214</span>
+          </div>
+          <div class="card-action">
+            <a href="https://forms.gle/sample-cs-club" target="_blank" rel="noopener noreferrer" class="btn btn-join">
+              <span>Join now</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Club 2: Animation Club (Pending) -->
+      <article class="club-card" data-category="arts">
+        <div class="card-top">
+          <span class="card-category-badge arts">Arts &amp; Culture</span>
+          <h2 class="club-name">Animation Club</h2>
+          <p class="club-description">Explore traditional and digital 2D/3D animation techniques, character design, storytelling, and collaborative short film production.</p>
+        </div>
+        <div class="card-bottom">
+          <div class="club-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Thursdays &bull; 4:00 PM &bull; Arts Building</span>
+          </div>
+          <div class="card-action">
+            <button type="button" class="btn btn-pending" disabled>
+              <span>Signup pending confirmation</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Club 3: Ceramics Club (Pending) -->
+      <article class="club-card" data-category="arts">
+        <div class="card-top">
+          <span class="card-category-badge arts">Arts &amp; Culture</span>
+          <h2 class="club-name">Ceramics Club</h2>
+          <p class="club-description">Hands-on pottery studio experience covering wheel throwing, hand-building, glazing, and kiln firing for students of every skill level.</p>
+        </div>
+        <div class="card-bottom">
+          <div class="club-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Tuesdays &bull; 2:30 PM &bull; Studio S-102</span>
+          </div>
+          <div class="card-action">
+            <button type="button" class="btn btn-pending" disabled>
+              <span>Signup pending confirmation</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Club 4: Student Government Association (Email to Join) -->
+      <article class="club-card" data-category="social">
+        <div class="card-top">
+          <span class="card-category-badge social">Social &amp; Community</span>
+          <h2 class="club-name">Student Government Association (SGA)</h2>
+          <p class="club-description">The official voice of KBCC students. Advocate for campus improvements, budget club activities, and organize college-wide social events.</p>
+        </div>
+        <div class="card-bottom">
+          <div class="club-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Mondays &bull; 1:00 PM &bull; Student Center</span>
+          </div>
+          <div class="card-action">
+            <a href="mailto:sga@kbcc.cuny.edu?subject=Interested%20in%20joining%20SGA" class="btn btn-email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Email to join</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Club 5: Robotics & Game Development (Confirmed Link) -->
+      <article class="club-card" data-category="academic">
+        <div class="card-top">
+          <span class="card-category-badge academic">Academic &amp; Tech</span>
+          <h2 class="club-name">Robotics &amp; Game Dev</h2>
+          <p class="club-description">Build autonomous micro-robots with Arduino/Raspberry Pi and create multiplayer indie games with Unity, Godot, and WebGL.</p>
+        </div>
+        <div class="card-bottom">
+          <div class="club-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Fridays &bull; 2:00 PM &bull; Tech Lab T-4</span>
+          </div>
+          <div class="card-action">
+            <a href="https://forms.gle/sample-robotics-signup" target="_blank" rel="noopener noreferrer" class="btn btn-join">
+              <span>Join now</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Club 6: Martial Arts & Wellness (Email to Join) -->
+      <article class="club-card" data-category="sports">
+        <div class="card-top">
+          <span class="card-category-badge sports">Sports &amp; Wellness</span>
+          <h2 class="club-name">Martial Arts &amp; Wellness</h2>
+          <p class="club-description">Promoting mental discipline, personal fitness, self-defense awareness, and stress relief through guided martial arts techniques.</p>
+        </div>
+        <div class="card-bottom">
+          <div class="club-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Tues &amp; Thurs &bull; 5:00 PM &bull; Gymnasium G-2</span>
+          </div>
+          <div class="card-action">
+            <a href="mailto:wellness@kbcc.cuny.edu?subject=Joining%20Martial%20Arts%20Club" class="btn btn-email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Email to join</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Empty State Card (Shown when search/filter returns 0 results) -->
+      <div class="empty-state" id="emptyState" role="status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          <line x1="8" y1="11" x2="14" y2="11"></line>
+        </svg>
+        <h3>No matching clubs found</h3>
+        <p>Try searching for a different keyword or resetting your filter category.</p>
+        <button type="button" class="btn-reset-search" id="resetSearchBtn">
+          Clear Search &amp; Show All
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        Kingsborough Community College &bull; <span>Club Directory</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.kbcc.cuny.edu/studentlife/joinaclub.html" target="_blank" rel="noopener noreferrer">Official KBCC Join a Club Page</a>
+        <a href="https://www.kbcc.cuny.edu/studentlife/" target="_blank" rel="noopener noreferrer">Office of Student Life</a>
+      </div>
+      <p class="footer-copy">Built with pride by the KBCC CS Club Project Team.</p>
+    </div>
+  </footer>
+
+  <!-- Search & Filter Prototype Script -->
+  <script src="preview.js"></script>
+</body>
+</html>
