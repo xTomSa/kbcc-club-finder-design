@@ -40,6 +40,20 @@
   --line-height-base: 1.6;
 }
 
+[data-theme="dark"] {
+  --foam: #0B1926;
+  --surface-card: #132639;
+  --surface-subtle: #18324B;
+  --border-card: #1F3E5C;
+  --mist: #1E3A57;
+  --ink: #E2EDF5;
+  --muted: #8BA9C4;
+  --harbor: #091A2B;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 10px 22px rgba(0, 0, 0, 0.5);
+}
+
 /* --------------------------------------------------------------------------
    2. Reset & Global Styles
    -------------------------------------------------------------------------- */
@@ -61,6 +75,18 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Smooth transitions on theme switch */
+body,
+.strip,
+header.site,
+aside.section-nav,
+.controls-card,
+.club-card,
+.way,
+.start {
+  transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease;
 }
 
 a {
@@ -132,6 +158,39 @@ img, svg {
 
 .strip a:hover {
   text-decoration: underline;
+}
+
+.strip-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.strip-right a {
+  margin-left: 0;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: var(--buoy);
 }
 
 header.site {
@@ -597,7 +656,7 @@ aside.section-nav a[aria-current="page"] {
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, color 0.22s ease;
   position: relative;
 }
 
@@ -906,7 +965,129 @@ footer.site .legal {
 }
 
 /* --------------------------------------------------------------------------
-   12. Responsive Breakpoints
+   12. Dark Mode Component Overrides
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] header.site {
+  background: #0D2033;
+  border-bottom-color: var(--mist);
+}
+
+[data-theme="dark"] nav.main a {
+  color: #E2EDF5;
+}
+
+[data-theme="dark"] nav.main a:hover {
+  color: var(--buoy);
+}
+
+[data-theme="dark"] aside.section-nav {
+  background: var(--surface-card);
+  border-color: var(--border-card);
+}
+
+[data-theme="dark"] aside.section-nav h2 {
+  color: var(--ink);
+}
+
+[data-theme="dark"] aside.section-nav a {
+  color: var(--ink);
+}
+
+[data-theme="dark"] aside.section-nav a:hover {
+  color: var(--tide);
+}
+
+[data-theme="dark"] aside.section-nav a[aria-current="page"] {
+  color: var(--buoy);
+  border-left-color: var(--buoy);
+}
+
+[data-theme="dark"] .ways h2,
+[data-theme="dark"] .clubs h2,
+[data-theme="dark"] .club-name {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .way {
+  background: var(--surface-card);
+  border-color: var(--border-card);
+}
+
+[data-theme="dark"] .way p {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .controls-card {
+  background: var(--surface-card);
+  border-color: var(--border-card);
+}
+
+[data-theme="dark"] .search-input {
+  background-color: var(--surface-subtle);
+  border-color: var(--border-card);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .search-input:focus {
+  background-color: var(--surface-card);
+}
+
+[data-theme="dark"] .chip-btn {
+  background-color: var(--surface-subtle);
+  border-color: var(--border-card);
+  color: var(--muted);
+}
+
+[data-theme="dark"] .chip-btn:hover {
+  background-color: var(--mist);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .chip-btn.active {
+  background-color: var(--buoy);
+  color: #0E2A47;
+  border-color: var(--buoy);
+}
+
+[data-theme="dark"] .results-summary strong {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .empty-state {
+  background: var(--surface-card);
+  border-color: var(--border-card);
+}
+
+[data-theme="dark"] .empty-state h3 {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .btn-reset-search {
+  background-color: var(--surface-subtle);
+  color: var(--ink);
+  border-color: var(--border-card);
+}
+
+[data-theme="dark"] .btn-reset-search:hover {
+  background-color: var(--mist);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .start {
+  background: #11283E;
+  border-left-color: var(--buoy);
+}
+
+[data-theme="dark"] .start h3 {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .start p {
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   13. Responsive Breakpoints
    -------------------------------------------------------------------------- */
 @media (max-width: 960px) {
   .ways-grid {
