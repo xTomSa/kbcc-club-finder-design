@@ -1,10 +1,50 @@
 /**
  * Kingsborough Community College - Club Directory
- * Client-side Search & Category Filter (Live Preview Prototype)
+ * Client-side Search, Category Filter & Theme Toggle Controller
  * For Design Preview & handoff reference for the Search Team
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Theme Toggle Controller ---
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = themeToggle?.querySelector('.theme-icon');
+  const themeLabel = themeToggle?.querySelector('.theme-label');
+
+  function updateToggleUI(isDark) {
+    if (themeIcon) themeIcon.textContent = isDark ? '☀️' : '🌙';
+    if (themeLabel) themeLabel.textContent = isDark ? 'Light' : 'Dark';
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      themeToggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+  }
+
+  // Synchronize button text with the active theme on load
+  const isDarkInitial = document.documentElement.getAttribute('data-theme') === 'dark';
+  updateToggleUI(isDarkInitial);
+
+  // Click event listener
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const nextTheme = isCurrentlyDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('kbcc-theme', nextTheme);
+      updateToggleUI(!isCurrentlyDark);
+    });
+  }
+
+  // OS Theme Change Listener (only applies when user hasn't explicitly set a preference in localStorage)
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  mediaQuery.addEventListener('change', (e) => {
+    if (!localStorage.getItem('kbcc-theme')) {
+      const newTheme = e.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      updateToggleUI(e.matches);
+    }
+  });
+
+  // --- Club Search & Category Filter ---
   const searchInput = document.getElementById('clubSearch');
   const clearBtn = document.getElementById('clearSearch');
   const chipButtons = document.querySelectorAll('.chip-btn');
